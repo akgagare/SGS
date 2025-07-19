@@ -48,9 +48,30 @@ const AdminDashboard = () => {
         </div>
       </div>
 
-      <div className='backdrop-blur-16xl background-color: rgba(255, 255, 255, 0.75); border-2 border-white  h-30 w-50 '>
-        {/* DONARS */}
-        
+      <div className='flex-col backdrop-blur-16xl background-color: rgba(255, 255, 255, 0.75); border-2 border-white mt-3'>
+        {/* we will use map here */}
+        {/* DONORS CARD */} 
+        <div className="w-full bg-gradient-to-br from-purple-500 to-white bg-transparent text-white rounded-2xl p-6 shadow-lg flex justify-between items-center mb-6">
+          {/* Donor Info Section */}
+          <div>
+            <h1 className="text-2xl font-semibold">Arun Gagare</h1>
+            <div className="mt-4 space-y-1 text-sm text-zinc-300">
+              <p>📞 Mobile: <span className="text-white">8425042511</span></p>
+              <p>💰 Amount: <span className="text-white font-medium">₹1000</span></p>
+              <p>📅 Date: <span className="text-white">18/07/2025, 21:23:51</span></p>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex gap-3 items-end">
+            <button className="bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-xl shadow-md transition">
+              ✅ Verify
+            </button>
+            <button className="bg-white text-black hover:bg-gray-200 px-5 py-2 rounded-xl shadow-md transition">
+              👁️ View
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
