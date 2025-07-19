@@ -1,11 +1,24 @@
 import React, { useState } from 'react';
+import { use } from 'react';
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [searchTerm,setSearchTerm] = useState(null);
+  const [donars,setDonar] = useState([]);
+  const [filteredDonars,setFilteredDonars] = useState([]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+
+  useEffect(() => {
+    const lower = searchTerm.toLowerCase();
+    const filtered = donars.filter((donar) =>
+      donar.name.toLowerCase().includes(lower) ||
+      donar.mobile.includes(searchTerm)
+    );
+    setFilteredDonars(filtered);
+  }, [searchTerm, donars]);
 
   return (
     <div className="bg-gradient-to-r from-purple-700 via-purple-800 to-indigo-900 p-6 rounded-2xl text-white shadow-lg">
@@ -15,12 +28,13 @@ const AdminDashboard = () => {
         <p className="text-sm text-white/80">Review and manage all donations</p>
       </div>
 
-      {/* Search + Filters */}
       <div className="flex flex-col md:flex-row md:items-center gap-3 mb-6">
         <input
           type="text"
           placeholder="Search by name, mobile, or ID..."
           className="w-full md:w-1/2 px-4 py-2 rounded-md bg-white/10 text-white placeholder-white/60 border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          value={searchTerm}
         />
         <select
           className="px-4 py-2 rounded-lg bg-white/10 backdrop-blur-sm text-white border border-white/20 focus:outline-none focus:ring-2 focus:ring-white/30 appearance-none"
